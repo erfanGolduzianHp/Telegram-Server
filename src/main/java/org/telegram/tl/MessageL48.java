@@ -5,7 +5,7 @@ import org.telegram.tl.*;
 
 public class MessageL48 extends TLMessage {
 
-    public static final int ID = 0xc09be45f;
+    public static final int ID = 0xc992e15c;
 
     public int flags;
     public int id;

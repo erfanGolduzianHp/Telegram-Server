@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class SentMessage extends TLSentMessage {
 
-    public static final int ID = 0x8a99d8e0;
+    public static final int ID = 0x11f1331c;
 
     public int id;
     public int date;
