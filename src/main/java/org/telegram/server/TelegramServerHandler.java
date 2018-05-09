@@ -72,17 +72,14 @@ public class TelegramServerHandler extends ChannelInboundHandlerAdapter {
 
             if (message.message_data instanceof req_pq) {
                 auth2 = ProtoAuthStore.getInstance().getProtoAuth(((req_pq) message.message_data).nonce);
-                ctx.writeAndFlush(auth2.msgs_ack(message.message_id));
                 ctx.writeAndFlush(auth2.resPQ((req_pq) message.message_data));
                 ProtoAuthStore.getInstance().updateProtoAuth(((req_pq) message.message_data).nonce, auth2);
             } else if (message.message_data instanceof req_DH_params) {
                 auth2 = ProtoAuthStore.getInstance().getProtoAuth(((req_DH_params) message.message_data).nonce);
-                ctx.writeAndFlush(auth2.msgs_ack(message.message_id));
                 ctx.writeAndFlush(auth2.server_DH_params((req_DH_params) message.message_data));
                 ProtoAuthStore.getInstance().updateProtoAuth(((req_DH_params) message.message_data).nonce, auth2);
             } else if (message.message_data instanceof set_client_DH_params) {
                 auth2 = ProtoAuthStore.getInstance().getProtoAuth(((set_client_DH_params) message.message_data).nonce);
-                ctx.writeAndFlush(auth2.msgs_ack(message.message_id));
                 ctx.writeAndFlush(auth2.set_client_DH_params((set_client_DH_params) message.message_data));
                 ProtoAuthStore.getInstance().removeProtoAuth(((set_client_DH_params) message.message_data).nonce);
             }
